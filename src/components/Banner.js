@@ -9,6 +9,10 @@ const Banner = () => {
         priority
         style={{ objectFit: 'cover' }}
       />
+      <div className='absolute left-36 sm:left-[45%] bottom-24 sm:bottom-32 text-center'>
+        <h3 className='mb-2'>Not sure where to go? Perfect.</h3>
+        <button className='p-3 bg-slate-300 text-lime-100 rounded-lg'>I&apos;m flexible</button>
+      </div>
     </div>
   )
 }
