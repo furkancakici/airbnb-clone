@@ -6,6 +6,7 @@ const Banner = () => {
         src="https://links.papareact.com/0fm"
         alt="banner"
         fill
+        priority
         style={{ objectFit: 'cover' }}
       />
     </div>

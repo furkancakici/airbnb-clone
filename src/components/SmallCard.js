@@ -5,7 +5,13 @@ const SmallCard = ({ img, location, distance }) => {
     <div className="flex items-center m-2 mt-5 space-x-4 cursor-pointer rounded-xl hover:bg-gray-100 hover:scale-105 transition duration-200 ease-out">
       {/* Left */}
       <div className="relative h-16 w-16">
-        <Image src={img} alt="showcase-item" fill className="rounded-lg" />
+        <Image
+          src={img}
+          alt="showcase-item"
+          fill
+          className="rounded-lg"
+          sizes="26px"
+        />
       </div>
 
       {/* Right */}

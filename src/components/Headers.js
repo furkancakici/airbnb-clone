@@ -14,6 +14,7 @@ const Headers = () => {
         <Image
           src="https://links.papareact.com/qd3"
           fill
+          sizes="128px"
           alt="AirbnbLogo"
           className="object-contain object-left cursor-pointer"
         />

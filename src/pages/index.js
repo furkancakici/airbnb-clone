@@ -3,10 +3,11 @@ import { Inter } from '@next/font/google'
 import Headers from '@/components/Headers'
 import Banner from '@/components/Banner'
 import SmallCard from '@/components/SmallCard'
+import MediumCard from '@/components/MediumCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ exploreData }) {
+export default function Home({ exploreData, cardsData }) {
   return (
     <>
       <Head>
@@ -24,13 +25,22 @@ export default function Home({ exploreData }) {
           <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {exploreData.map((item) => (
+            {exploreData?.map((item) => (
               <SmallCard
                 key={item.img}
                 img={item.img}
                 location={item.location}
                 distance={item.distance}
               />
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
+          <div className="flex space-x-3 overflow-scroll">
+            {cardsData?.map(({ img, title }, idx) => (
+              <MediumCard key={idx} img={img} title={title} />
             ))}
           </div>
         </section>
