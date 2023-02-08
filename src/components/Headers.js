@@ -5,8 +5,28 @@ import {
   Bars3Icon,
   UserCircleIcon,
 } from '@heroicons/react/24/solid'
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
+import { DateRangePicker } from 'react-date-range'
+import { useState } from 'react'
 
 const Headers = () => {
+  const [searchInput, setSearchInput] = useState()
+  const [startDate, setStartDate] = useState()
+  const [endDate, setEndDate] = useState()
+
+  const selectionRange = {
+    startDate,
+    endDate,
+    key:'Selection'
+  }
+
+  const handleSelect = (ranges) => {
+    setStartDate(ranges.selection.startDate)
+    setEndDate(ranges.selection.endDate)
+  }
+  
+  
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 p-5 md:px-10 bg-white shadow-md">
       {/* Logo */}
@@ -23,6 +43,8 @@ const Headers = () => {
       {/* Search */}
       <div className="flex justify-between items-center py-2 md:border-2 md:shadow-sm rounded-full">
         <input
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
           type="text"
           placeholder="Start your search.."
           className="ml-5 w-full bg-transparent outline-none text-gray-600 placeholder-gray-400"
@@ -40,6 +62,18 @@ const Headers = () => {
           <UserCircleIcon className="h-6" />
         </div>
       </div>
+
+      {searchInput && 
+      <div>
+        <DateRangePicker
+          ranges={[selectionRange]}
+          minDate={new Date()}
+          rangeColors={['#FD5861']}
+          onChange={handleSelect}
+        />
+      </div>
+      }
+      
     </header>
   )
 }
