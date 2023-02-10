@@ -1,13 +1,13 @@
-import Head from 'next/head'
-import { Inter } from '@next/font/google'
-import Headers from '@/components/Headers'
-import Banner from '@/components/Banner'
-import SmallCard from '@/components/SmallCard'
-import MediumCard from '@/components/MediumCard'
-import LargeCard from '@/components/LargeCard'
-import Footer from '@/components/Footer'
+import Head from 'next/head';
+import { Inter } from '@next/font/google';
+import Headers from '@/components/Headers';
+import Banner from '@/components/Banner';
+import SmallCard from '@/components/SmallCard';
+import MediumCard from '@/components/MediumCard';
+import LargeCard from '@/components/LargeCard';
+import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ exploreData, cardsData }) {
   return (
@@ -28,12 +28,7 @@ export default function Home({ exploreData, cardsData }) {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {exploreData?.map((item) => (
-              <SmallCard
-                key={item.img}
-                img={item.img}
-                location={item.location}
-                distance={item.distance}
-              />
+              <SmallCard key={item.img} img={item.img} location={item.location} distance={item.distance} />
             ))}
           </div>
         </section>
@@ -57,22 +52,18 @@ export default function Home({ exploreData, cardsData }) {
         <Footer />
       </main>
     </>
-  )
+  );
 }
 
 export async function getStaticProps() {
-  const exploreData = await fetch('https://www.jsonkeeper.com/b/4G1G').then(
-    (res) => res.json(),
-  )
+  const exploreData = await fetch('https://www.jsonkeeper.com/b/4G1G').then((res) => res.json());
 
-  const cardsData = await fetch('https://www.jsonkeeper.com/b/VHHT').then(
-    (res) => res.json(),
-  )
+  const cardsData = await fetch('https://www.jsonkeeper.com/b/VHHT').then((res) => res.json());
 
   return {
     props: {
       exploreData,
-      cardsData,
-    },
-  }
+      cardsData
+    }
+  };
 }

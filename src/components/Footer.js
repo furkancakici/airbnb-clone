@@ -18,7 +18,7 @@ const Footer = () => {
         <p>Referrals accepted</p>
         <p>Papafam</p>
       </div>
-      
+
       <div className="space-y-4 text-xs text-gray-800">
         <h5 className="font-bold">HOST</h5>
         <p>Papa React</p>
@@ -27,7 +27,7 @@ const Footer = () => {
         <p>Hundreds of Students</p>
         <p>Join Now</p>
       </div>
-      
+
       <div className="space-y-4 text-xs text-gray-800">
         <h5 className="font-bold">SUPPORT</h5>
         <p>Help Center</p>
@@ -39,7 +39,7 @@ const Footer = () => {
 
       <div></div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

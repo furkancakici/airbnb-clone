@@ -1,32 +1,26 @@
-import Image from 'next/image'
-import {
-  MagnifyingGlassIcon,
-  GlobeAltIcon,
-  Bars3Icon,
-  UserCircleIcon,
-} from '@heroicons/react/24/solid'
-import 'react-date-range/dist/styles.css'
-import 'react-date-range/dist/theme/default.css'
-import { DateRangePicker } from 'react-date-range'
-import { useState } from 'react'
+import Image from 'next/image';
+import { MagnifyingGlassIcon, GlobeAltIcon, Bars3Icon, UserCircleIcon } from '@heroicons/react/24/solid';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+import { DateRangePicker } from 'react-date-range';
+import { useState } from 'react';
 
 const Headers = () => {
-  const [searchInput, setSearchInput] = useState()
-  const [startDate, setStartDate] = useState()
-  const [endDate, setEndDate] = useState()
+  const [searchInput, setSearchInput] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+
+  const handleSelect = (ranges) => {
+    setStartDate(ranges.selection.startDate);
+    setEndDate(ranges.selection.endDate);
+  };
 
   const selectionRange = {
     startDate,
     endDate,
-    key:'Selection'
-  }
+    key: 'Selection'
+  };
 
-  const handleSelect = (ranges) => {
-    setStartDate(ranges.selection.startDate)
-    setEndDate(ranges.selection.endDate)
-  }
-  
-  
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 p-5 md:px-10 bg-white shadow-md">
       {/* Logo */}
@@ -63,19 +57,18 @@ const Headers = () => {
         </div>
       </div>
 
-      {searchInput && 
-      <div>
-        <DateRangePicker
-          ranges={[selectionRange]}
-          minDate={new Date()}
-          rangeColors={['#FD5861']}
-          onChange={handleSelect}
-        />
-      </div>
-      }
-      
+      {searchInput && (
+        <div>
+          <DateRangePicker
+            ranges={[selectionRange]}
+            minDate={new Date()}
+            rangeColors={['#FD5861']}
+            onChange={handleSelect}
+          />
+        </div>
+      )}
     </header>
-  )
-}
+  );
+};
 
-export default Headers
+export default Headers;
