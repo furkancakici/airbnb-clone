@@ -5,7 +5,7 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 
-const Headers = () => {
+const Header = () => {
   const [searchInput, setSearchInput] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
@@ -85,4 +85,4 @@ const Headers = () => {
   );
 };
 
-export default Headers;
+export default Header;

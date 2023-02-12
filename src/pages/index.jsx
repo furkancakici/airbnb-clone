@@ -1,11 +1,11 @@
 import Head from 'next/head';
 // import { Inter } from '@next/font/google';
-import Headers from '@/components/Headers';
+import Headers from '@/containers/Header';
 import Banner from '@/components/Banner';
 import SmallCard from '@/components/SmallCard';
 import MediumCard from '@/components/MediumCard';
 import LargeCard from '@/components/LargeCard';
-import Footer from '@/components/Footer';
+import Footer from '@/containers/Footer';
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +19,6 @@ export default function Home({ exploreData, cardsData }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <Headers />
       <Banner />
 
       <main className="max-w-7xl mx-auto px-8 sm:px-16">
@@ -48,8 +47,6 @@ export default function Home({ exploreData, cardsData }) {
           description="Wishlists curated by Airbnb."
           buttonText="Get Inspired"
         />
-
-        <Footer />
       </main>
     </>
   );
