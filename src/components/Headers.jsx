@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import Image from 'next/image';
-import { MagnifyingGlassIcon, GlobeAltIcon, Bars3Icon, UserCircleIcon } from '@heroicons/react/24/solid';
+import { MagnifyingGlassIcon, GlobeAltIcon, Bars3Icon, UserCircleIcon, UserIcon } from '@heroicons/react/24/solid';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
-import { useState } from 'react';
 
 const Headers = () => {
   const [searchInput, setSearchInput] = useState();
@@ -18,7 +18,7 @@ const Headers = () => {
   const selectionRange = {
     startDate,
     endDate,
-    key: 'Selection'
+    key: 'selection'
   };
 
   return (
@@ -58,13 +58,20 @@ const Headers = () => {
       </div>
 
       {searchInput && (
-        <div>
+        <div className="flex flex-col col-span-3 mx-auto">
           <DateRangePicker
             ranges={[selectionRange]}
             minDate={new Date()}
             rangeColors={['#FD5861']}
             onChange={handleSelect}
           />
+
+          <div className="flex items-center border-b mb-4">
+            <h2 className="text-2xl flex-grow font-semibold">Number of Guest</h2>
+
+            <UserIcon className="h-8" />
+            <input value={noOfGuest} />
+          </div>
         </div>
       )}
     </header>
