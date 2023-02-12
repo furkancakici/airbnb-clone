@@ -1,13 +1,9 @@
 import Head from 'next/head';
-// import { Inter } from '@next/font/google';
-import Headers from '@/containers/Header';
 import Banner from '@/components/Banner';
 import SmallCard from '@/components/SmallCard';
 import MediumCard from '@/components/MediumCard';
 import LargeCard from '@/components/LargeCard';
-import Footer from '@/containers/Footer';
 
-// const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ exploreData, cardsData }) {
   return (
