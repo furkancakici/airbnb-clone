@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { DateRangePicker } from 'react-date-range';
+import { format } from 'date-fns';
 import { MagnifyingGlassIcon, GlobeAltIcon, Bars3Icon, UserCircleIcon, UserIcon } from '@heroicons/react/24/solid';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { DateRangePicker } from 'react-date-range';
-import { useRouter } from 'next/router';
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState();
+  const [placeholder, setPlaceholder] = useState('');
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [noOfGuest, setNoOfGuest] = useState(0);
@@ -28,16 +30,27 @@ const Header = () => {
     setSearchInput('');
   };
 
-  const search = () => {
-    router.push({
+  const search = async () => {
+    await router.push({
       pathname: '/search',
       query: {
         location: searchInput,
-        startDate: startDate.toString(),
-        endDate: endDate.toString(),
+        startDate: startDate?.toString(),
+        endDate: endDate?.toString(),
         noOfGuest
       }
     });
+
+    setSearchInput('');
+    await placeholderBlock();
+  };
+
+  const placeholderBlock = () => {
+    const formattedStartDate = format(new Date(startDate), 'dd MMMM yy');
+    const formattedEndDate = format(new Date(endDate), 'dd MMMM yy');
+    const range = `${formattedStartDate} - ${formattedEndDate}`;
+
+    setPlaceholder(`${searchInput} | ${range} | ${noOfGuest}`);
   };
 
   return (
@@ -59,7 +72,7 @@ const Header = () => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           type="text"
-          placeholder="Start your search.."
+          placeholder={router.route === '/search' ? placeholder : 'Search...'}
           className="ml-5 w-full bg-transparent outline-none text-gray-600 placeholder-gray-400"
         />
         <MagnifyingGlassIcon className="h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer mx-2" />
