@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-		"prettier": "prettier --write --check 'src/**/*.{js,jsx,ts,tsx,css,md}' --config ./.prettierrc.json",
+    "prettier": "prettier --write --check 'src/**/*.{js,jsx,ts,tsx,css,md}' --config ./.prettierrc.json",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.4",
     "next": "13.1.4",
+    "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-date-range": "^1.4.0",
     "react-dom": "18.2.0"
